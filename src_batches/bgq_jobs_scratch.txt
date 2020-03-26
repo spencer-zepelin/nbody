@@ -1,0 +1,68 @@
+###
+# PERFORMANCE ANALYSIS
+###
+
+# PURE MPI
+
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 15 -n 32 --mode c64 ./nbody_pure 100352 10 0.1 1
+
+
+# HYBRID MPI/OpenMP
+
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 15 -n 32 --mode c1 ./nbody_hybrid 100352 10 0.1 64
+
+
+
+###
+# STRONG SCALING
+###
+
+
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 15 -n 32 --mode c64 ./nbody 524288 10 0.1 1
+
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 15 -n 64 --mode c64 ./nbody 524288 10 0.1 1
+
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 15 -n 128 --mode c64 ./nbody 524288 10 0.1 1
+
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 15 -n 256 --mode c64 ./nbody 524288 10 0.1 1
+
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 15 -n 512 --mode c64 ./nbody 524288 10 0.1 1
+
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 15 -n 1024 --mode c64 ./nbody 524288 10 0.1 1
+
+
+# STRONG HYBRID TESTING
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 15 -n 32 --mode c1 ./nbody_hybrid 524288 10 0.1 64
+
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 15 -n 64 --mode c1 ./nbody_hybrid 524288 10 0.1 64
+
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 15 -n 128 --mode c1 ./nbody_hybrid 524288 10 0.1 64
+
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 15 -n 256 --mode c1 ./nbody_hybrid 524288 10 0.1 64
+
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 15 -n 512 --mode c1 ./nbody_hybrid 524288 10 0.1 64
+
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 15 -n 1024 --mode c1 ./nbody_hybrid 524288 10 0.1 64
+
+
+
+###
+# Production Simulation
+###
+
+
+# 10 iterations
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 60 -n 1024 --mode c1 ./nbody_prod 786432 10 0.2 64
+
+# 800 iterations
+qsub --notify "zepelin@uchicago.edu" -A MPCS51087_2019 -t 60 -n 1024 --mode c1 ./nbody_prod 786432 800 0.2 64
+
+
+
+
+
+
+
+
+
+
